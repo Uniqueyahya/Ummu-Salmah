@@ -1,0 +1,29 @@
+
+> porfolio@0.1.0 dev
+> next dev
+
+⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of C:\Users\HomePC\Desktop\my-2k26-porfolio-main\package-lock.json as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * C:\Users\HomePC\Desktop\my-2k26-porfolio-main\my-2k26-porfolio-main\my-2k26-porfolio-main\package-lock.json
+   * C:\Users\HomePC\Desktop\my-2k26-porfolio-main\my-2k26-porfolio-main\package-lock.json
+
+▲ Next.js 16.1.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://172.22.80.1:3000
+
+✓ Starting...
+✓ Ready in 19.3s
+○ Compiling / ...
+ GET / 200 in 13.6s (compile: 8.5s, render: 5.1s)
+ GET / 200 in 17.1s (compile: 14.6s, render: 2.5s)
+ GET / 200 in 1473ms (compile: 18ms, render: 1455ms)
+✓ Compiled in 2.5s
+ GET / 200 in 3.4s (compile: 1970ms, render: 1434ms)
+ GET / 200 in 310ms (compile: 48ms, render: 262ms)
+ GET / 200 in 99ms (compile: 27ms, render: 72ms)
+✓ Compiled in 1571ms
+ GET / 200 in 1345ms (compile: 275ms, render: 1070ms)
+[?25h

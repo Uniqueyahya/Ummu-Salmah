@@ -1,0 +1,55 @@
+.cta {
+    position: relative;
+    overflow: hidden;
+}
+
+.ambientOrb {
+    position: absolute;
+    top: -30%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    height: 900px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, transparent 70%);
+    filter: blur(120px);
+    pointer-events: none;
+}
+
+.ambientOrb2 {
+    position: absolute;
+    bottom: -40%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+    filter: blur(100px);
+    pointer-events: none;
+}
+
+.content {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.heading {
+    margin-bottom: 24px;
+}
+
+.sub {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    max-width: 520px;
+    margin: 0 auto 48px;
+    color: var(--text-secondary);
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}

@@ -1,0 +1,81 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 24px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--card-radius);
+    padding: 36px 30px;
+    transition: all var(--transition-spring);
+    cursor: default;
+    box-shadow: var(--shadow-sm);
+}
+
+.card:hover {
+    border-color: rgba(37, 99, 235, 0.3);
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(37, 99, 235, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.iconWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-md);
+    background: color-mix(in srgb, var(--card-color) 10%, rgba(255, 255, 255, 0.02));
+    color: var(--card-color);
+    margin-bottom: 24px;
+    border: 1px solid color-mix(in srgb, var(--card-color) 20%, transparent);
+    transition: all var(--transition-fast);
+}
+
+.card:hover .iconWrap {
+    transform: scale(1.05);
+    background: color-mix(in srgb, var(--card-color) 15%, rgba(255, 255, 255, 0.04));
+}
+
+.cardContent {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.problem {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+.arrow {
+    color: var(--accent-light);
+    flex-shrink: 0;
+}
+
+.solution {
+    font-size: 0.95rem;
+    color: var(--text-primary) !important;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .cardContent {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}
