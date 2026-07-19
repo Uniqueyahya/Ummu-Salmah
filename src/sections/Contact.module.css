@@ -1,205 +1,100 @@
-.layout {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 64px;
-    align-items: start;
+.contact {
+  position: relative;
+  overflow: hidden;
 }
 
-/* Form using premium glassmorphism */
-.form {
-    background: rgba(255, 255, 255, 0.02);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: var(--card-radius);
-    padding: 48px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    box-shadow: var(--shadow-md);
+.glow1 {
+  position: absolute;
+  top: -10%;
+  left: 20%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(167, 139, 250, 0.15), transparent 70%);
+  filter: blur(80px);
+  z-index: 0;
+  pointer-events: none;
+  animation: blob-move 15s ease-in-out infinite alternate;
 }
 
-.field {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+.glow2 {
+  position: absolute;
+  bottom: -20%;
+  right: 15%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.1), transparent 70%);
+  filter: blur(90px);
+  z-index: 0;
+  pointer-events: none;
+  animation: blob-move 20s ease-in-out infinite alternate-reverse;
 }
 
-.label {
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+.card {
+  position: relative;
+  z-index: 1;
+  padding: 80px 48px;
+  text-align: center;
+  overflow: hidden;
 }
 
-.input,
-.textarea {
-    width: 100%;
-    padding: 16px 20px;
-    border-radius: var(--radius-md);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    background: rgba(255, 255, 255, 0.01);
-    color: var(--text-primary);
-    font-size: 0.925rem;
-    font-family: inherit;
-    transition: all var(--transition-fast);
-    outline: none;
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(167, 139, 250, 0.05), transparent 50%);
+  pointer-events: none;
 }
 
-.input:focus,
-.textarea:focus {
-    border-color: rgba(37, 99, 235, 0.5);
-    background: rgba(255, 255, 255, 0.03);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+.content {
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
 }
 
-.textarea {
-    resize: vertical;
-    min-height: 140px;
+.subtitle {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
 }
 
-/* Channels */
-.channels {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+.title {
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 0;
 }
 
-.channelCard {
-    background: rgba(255, 255, 255, 0.02);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: var(--card-radius);
-    padding: 32px;
-    box-shadow: var(--shadow-sm);
+.titleGradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.channelTitle {
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--text-muted);
-    margin-bottom: 20px;
+.desc {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
 }
 
-.channel {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 12px;
-    border-radius: var(--radius-md);
-    transition: all var(--transition-fast);
-    text-decoration: none;
-    border: 1px solid transparent;
-}
-
-.channel:hover {
-    background: rgba(255, 255, 255, 0.03);
-    border-color: rgba(255, 255, 255, 0.04);
-}
-
-.channelIcon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 46px;
-    height: 46px;
-    border-radius: var(--radius-md);
-    flex-shrink: 0;
-    background: rgba(37, 99, 235, 0.08);
-    color: var(--accent-light);
-    border: 1px solid rgba(37, 99, 235, 0.15);
-}
-
-.channelName {
-    display: block;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--text-primary);
-}
-
-.channelValue {
-    display: block;
-    font-size: 0.78rem;
-    color: var(--text-secondary);
-    margin-top: 2px;
-}
-
-.channelArrow {
-    margin-left: auto;
-    color: var(--text-muted);
-    opacity: 0;
-    transition: all var(--transition-fast);
-}
-
-.channel:hover .channelArrow {
-    opacity: 1;
-    transform: translateX(4px);
-}
-
-/* Socials */
-.socialRow {
-    display: flex;
-    gap: 12px;
-}
-
-.socialBtn {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 24px;
-    border-radius: var(--radius-full);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--text-secondary);
-    text-decoration: none;
-    transition: all var(--transition-fast);
-    flex: 1;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.01);
-}
-
-.socialBtn:hover {
-    border-color: rgba(37, 99, 235, 0.35);
-    color: var(--text-primary);
-    background: rgba(255, 255, 255, 0.04);
-}
-
-/* Calendar */
-.calendarBtn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 18px;
-    border-radius: var(--radius-md);
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px dashed rgba(37, 99, 235, 0.35);
-    color: var(--accent-light);
-    font-weight: 700;
-    font-size: 0.9rem;
-    text-decoration: none;
-    transition: all var(--transition-spring);
-}
-
-.calendarBtn:hover {
-    background: rgba(37, 99, 235, 0.06);
-    border-color: rgba(37, 99, 235, 0.6);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.05);
+.actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 12px;
 }
 
 @media (max-width: 768px) {
-    .layout {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-
-    .form {
-        padding: 32px 24px;
-    }
+  .card {
+    padding: 56px 24px;
+  }
 }

@@ -1,59 +1,53 @@
 'use client';
 
-import { Quote } from 'lucide-react';
 import styles from './Testimonials.module.css';
+import { Quote } from 'lucide-react';
 
 const testimonials = [
-    {
-        quote: 'Working with Unique was incredible. He understood our vision and delivered a product that exceeded expectations.',
-        name: 'Coming Soon',
-        role: 'Client Testimonial',
-        company: '',
-    },
-    {
-        quote: 'Professional, transparent, and results-driven. Unique doesn\'t just build — he thinks strategically about the business.',
-        name: 'Coming Soon',
-        role: 'Client Testimonial',
-        company: '',
-    },
-    {
-        quote: 'Our platform went from idea to launch in record time. The code quality and communication were outstanding.',
-        name: 'Coming Soon',
-        role: 'Client Testimonial',
-        company: '',
-    },
+  {
+    quote: 'Ummu has an incredible eye for detail. She took our messy product requirements and turned them into a clean, intuitive SaaS dashboard that our clients absolutely love. Highly recommended!',
+    author: 'Sarah Jenkins',
+    role: 'Product Director at Pulse Health',
+  },
+  {
+    quote: 'Working with Ummu Salmah was a game changer for our mobile app. Her research-focused UX design and beautifully curated Figma files made the developer handoff completely seamless.',
+    author: 'Unique Yahya',
+    role: 'Full Stack Developer',
+  },
+  {
+    quote: 'Ummu Salmah delivered a beautiful, clean design system that saved our design team hundreds of hours. Her communication and professionalism are outstanding.',
+    author: 'Michael Chang',
+    role: 'Lead UX Manager at Nova Retail',
+  },
 ];
 
 export default function Testimonials() {
-    return (
-        <section className="section" id="testimonials">
-            <div className="container">
-                <div className="section-header reveal">
-                    <span className="section-label">Testimonials</span>
-                    <h2 className="section-title">
-                        What Clients <span className="gradient-text">Say</span>
-                    </h2>
-                    <p className="section-subtitle">
-                        Feedback from founders and businesses I&apos;ve worked with.
-                    </p>
-                </div>
+  return (
+    <section id="testimonials" className={`section ${styles.testimonials}`}>
+      <div className="container">
+        <div className="section-header">
+          <span className="section-label">Wall of Love</span>
+          <h2 className="section-title gradient-text">Client Testimonials</h2>
+          <p className="section-subtitle">
+            What clients and collaborators say about working with me.
+          </p>
+        </div>
 
-                <div className={`${styles.grid} stagger-children`}>
-                    {testimonials.map((t, i) => (
-                        <div key={i} className={`${styles.card} reveal`}>
-                            <Quote size={28} className={styles.quoteIcon} />
-                            <p className={styles.quote}>{t.quote}</p>
-                            <div className={styles.author}>
-                                <div className={styles.avatar}>{t.name.charAt(0)}</div>
-                                <div>
-                                    <p className={styles.name}>{t.name}</p>
-                                    <p className={styles.role}>{t.role}</p>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
+        <div className={`${styles.grid} stagger-children`}>
+          {testimonials.map((t, i) => (
+            <div key={i} className={`${styles.card} glass-card reveal`} style={{ transitionDelay: `${i * 0.1}s` }}>
+              <div className={styles.quoteIcon}>
+                <Quote size={28} />
+              </div>
+              <p className={styles.quoteText}>&ldquo;{t.quote}&rdquo;</p>
+              <div className={styles.meta}>
+                <h4 className={styles.author}>{t.author}</h4>
+                <p className={styles.role}>{t.role}</p>
+              </div>
             </div>
-        </section>
-    );
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }

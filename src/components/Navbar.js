@@ -1,111 +1,91 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { Menu, X, Sun, Moon } from 'lucide-react';
-import { useTheme } from '@/context/ThemeContext';
 import styles from './Navbar.module.css';
 
 const navLinks = [
-    { label: 'Services', href: '#services' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Process', href: '#process' },
-    { label: 'About', href: '#about' },
-    { label: 'Contact', href: '#contact' },
+  { label: 'Home', href: '#home' },
+  { label: 'About', href: '#about' },
+  { label: 'Services', href: '#services' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Process', href: '#process' },
+  { label: 'Contact', href: '#contact' },
 ];
 
 export default function Navbar() {
-    const { theme, toggleTheme, mounted } = useTheme();
-    const [menuOpen, setMenuOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-    useEffect(() => {
-        const handleScroll = () => setScrolled(window.scrollY > 20);
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
 
-    const handleNavClick = (e, href) => {
-        if (href.startsWith('#')) {
-            e.preventDefault();
-            const el = document.querySelector(href);
-            if (el) {
-                el.scrollIntoView({ behavior: 'smooth' });
-            }
-            setMenuOpen(false);
+      const sections = navLinks.map((link) => link.href.replace('#', ''));
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sections[i]);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 120) {
+            setActiveSection(sections[i]);
+            break;
+          }
         }
+      }
     };
 
-    return (
-        <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
-            <div className={`container ${styles.inner}`}>
-                <Link href="/" className={styles.logo}>
-                    Unique<span className={styles.logoAccent}>Yahya</span>
-                </Link>
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-                <div className={styles.desktopNav}>
-                    {navLinks.map((link) => (
-                        <a
-                            key={link.label}
-                            href={link.href}
-                            className={styles.navLink}
-                            onClick={(e) => handleNavClick(e, link.href)}
-                        >
-                            {link.label}
-                        </a>
-                    ))}
-                    <a href="#contact" className={`btn btn-primary btn-sm ${styles.ctaBtn}`} onClick={(e) => handleNavClick(e, '#contact')}>
-                        Start a Project
-                    </a>
-                    {mounted && (
-                        <button
-                            className={styles.themeToggle}
-                            onClick={toggleTheme}
-                            aria-label="Toggle theme"
-                        >
-                            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-                        </button>
-                    )}
-                </div>
+  const handleNavClick = (e, href) => {
+    e.preventDefault();
+    setMobileOpen(false);
+    const el = document.querySelector(href);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
-                <div className={styles.mobileActions}>
-                    {mounted && (
-                        <button
-                            className={styles.themeToggle}
-                            onClick={toggleTheme}
-                            aria-label="Toggle theme"
-                        >
-                            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-                        </button>
-                    )}
-                    <button
-                        className={styles.hamburger}
-                        onClick={() => setMenuOpen(!menuOpen)}
-                        aria-label="Toggle menu"
-                    >
-                        {menuOpen ? <X size={22} /> : <Menu size={22} />}
-                    </button>
-                </div>
-            </div>
+  return (
+    <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`} role="navigation" aria-label="Main navigation">
+      <div className={`container ${styles.navInner}`}>
+        <a href="#home" className={styles.logo} onClick={(e) => handleNavClick(e, '#home')}>
+          <span className={styles.logoText}>Ummu</span>
+          <span className={styles.logoDot}>.</span>
+        </a>
 
-            {/* Mobile Overlay */}
-            <div className={`${styles.mobileOverlay} ${menuOpen ? styles.mobileOpen : ''}`}>
-                <div className={styles.mobileNav}>
-                    {navLinks.map((link) => (
-                        <a
-                            key={link.label}
-                            href={link.href}
-                            className={styles.mobileLink}
-                            onClick={(e) => handleNavClick(e, link.href)}
-                        >
-                            {link.label}
-                        </a>
-                    ))}
-                    <a href="#contact" className="btn btn-primary" onClick={(e) => handleNavClick(e, '#contact')}>
-                        Start a Project
-                    </a>
-                </div>
-            </div>
-        </nav>
-    );
+        <div className={`${styles.navLinks} ${mobileOpen ? styles.open : ''}`}>
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className={`${styles.navLink} ${activeSection === link.href.replace('#', '') ? styles.active : ''}`}
+              onClick={(e) => handleNavClick(e, link.href)}
+            >
+              {link.label}
+            </a>
+          ))}
+          <a
+            href="#contact"
+            className={styles.navCta}
+            onClick={(e) => handleNavClick(e, '#contact')}
+          >
+            Let&apos;s Talk
+          </a>
+        </div>
+
+        <button
+          className={`${styles.hamburger} ${mobileOpen ? styles.hamburgerOpen : ''}`}
+          onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label="Toggle navigation menu"
+          aria-expanded={mobileOpen}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+      </div>
+    </nav>
+  );
 }

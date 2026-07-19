@@ -1,34 +1,58 @@
 'use client';
 
-import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { useEffect, useState } from 'react';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import ScrollProgress from '@/components/ScrollProgress';
+import WhatsAppFAB from '@/components/WhatsAppFAB';
 import Hero from '@/sections/Hero';
-import HowIHelp from '@/sections/HowIHelp';
-import WhatIBuild from '@/sections/WhatIBuild';
-import WhyChooseMe from '@/sections/WhyChooseMe';
-import Projects from '@/sections/Projects';
-import Process from '@/sections/Process';
 import About from '@/sections/About';
-import TechStack from '@/sections/TechStack';
+import Services from '@/sections/Services';
+import Skills from '@/sections/Skills';
+import Process from '@/sections/Process';
+import Projects from '@/sections/Projects';
 import Testimonials from '@/sections/Testimonials';
-import CallToAction from '@/sections/CallToAction';
 import Contact from '@/sections/Contact';
 
 export default function HomePage() {
-  useScrollReveal();
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    setLoaded(true);
+
+    // Scroll reveal observer
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-scale').forEach((el) => {
+      observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <>
+      <ScrollProgress />
+      <Navbar />
       <Hero />
-      <HowIHelp />
-      <WhatIBuild />
-      <WhyChooseMe />
-      <Projects />
-      <Process />
       <About />
-      <TechStack />
+      <Services />
+      <Skills />
+      <Process />
+      <Projects />
       <Testimonials />
-      <CallToAction />
       <Contact />
+      <WhatsAppFAB />
+      <Footer />
     </>
   );
 }

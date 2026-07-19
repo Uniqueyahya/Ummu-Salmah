@@ -1,82 +1,58 @@
+.testimonials {
+  position: relative;
+  background: var(--bg-secondary);
+}
+
 .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 32px;
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.02);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: var(--card-radius);
-    padding: 40px 36px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    transition: all var(--transition-spring);
-    box-shadow: var(--shadow-sm);
-}
-
-.card:hover {
-    border-color: rgba(37, 99, 235, 0.35);
-    transform: translateY(-6px);
-    box-shadow: 0 16px 40px rgba(37, 99, 235, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    background: rgba(255, 255, 255, 0.04);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .quoteIcon {
-    font-size: 1.8rem;
-    opacity: 0.2;
-    color: var(--accent-light);
+  color: rgba(167, 139, 250, 0.15);
+  display: inline-flex;
 }
 
-.quote {
-    font-size: 0.95rem;
-    line-height: 1.8;
-    color: var(--text-secondary);
-    font-style: italic;
+.quoteText {
+  font-size: 0.98rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.meta {
+  margin-top: auto;
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
 }
 
 .author {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-top: auto;
-}
-
-.avatar {
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 0.88rem;
-    color: #ffffff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.authorInfo {
-    display: flex;
-    flex-direction: column;
-}
-
-.name {
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: var(--text-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
 }
 
 .role {
-    font-size: 0.78rem;
-    color: var(--text-secondary);
+  font-size: 0.8rem;
+  color: var(--text-muted);
 }
 
 @media (max-width: 768px) {
-    .grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .card {
+    padding: 30px;
+  }
 }

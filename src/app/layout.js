@@ -1,52 +1,42 @@
 import './globals.css';
-import { ThemeProvider } from '@/context/ThemeContext';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import WhatsAppFAB from '@/components/WhatsAppFAB';
-import { Inter, Syne, Geist } from 'next/font/google';
+import { Inter, Sora } from 'next/font/google';
 
 const inter = Inter({
-  variable: '--font-secondary',
+  variable: '--font-body',
   subsets: ['latin'],
   display: 'swap',
 });
 
-const syne = Syne({
-  variable: '--font-display',
+const sora = Sora({
+  variable: '--font-heading',
   subsets: ['latin'],
-  weight: ['600', '700', '800'],
-  display: 'swap',
-});
-
-const geist = Geist({
-  variable: '--font-primary',
-  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800'],
   display: 'swap',
 });
 
 export const metadata = {
-  title: 'Unique Yahya — Web & Mobile App Developer | Building Revenue-Driven Products',
+  title: 'Ummu Salmah — UI/UX Designer | Crafting Meaningful Digital Experiences',
   description:
-    'I help startups, businesses, and founders launch scalable web and mobile products that generate users, leads, and sales.',
-  keywords: 'web developer, mobile app developer, react, node.js, freelance developer, Nigeria',
+    'Ummu Salmah is a UI/UX Designer specializing in intuitive, accessible, and visually engaging digital experiences that solve real user problems.',
+  keywords: 'UI/UX designer, user experience, user interface, Figma, prototyping, wireframing, design systems, mobile app design, web design',
   openGraph: {
-    title: 'Unique Yahya — Web & Mobile App Developer',
-    description: 'I build web & mobile apps that turn ideas into revenue.',
+    title: 'Ummu Salmah — UI/UX Designer',
+    description: 'Crafting intuitive, accessible, and visually engaging digital experiences.',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Ummu Salmah — UI/UX Designer',
+    description: 'Crafting intuitive, accessible, and visually engaging digital experiences.',
   },
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${syne.variable} ${geist.variable}`} data-theme="dark" suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${sora.variable}`} suppressHydrationWarning>
       <head />
       <body>
-        <ThemeProvider>
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-          <WhatsAppFAB />
-        </ThemeProvider>
+        <main>{children}</main>
       </body>
     </html>
   );

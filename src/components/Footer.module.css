@@ -1,64 +1,90 @@
 .footer {
-    padding: 48px 0 28px;
-    border-top: 1px solid var(--border);
+  border-top: 1px solid var(--border);
+  padding: 40px 0;
+  background: var(--bg-primary);
+  position: relative;
+  z-index: 10;
 }
 
 .inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
 }
 
 .brand {
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.name {
-    font-size: 1.15rem;
-    font-weight: 800;
-    color: var(--text-primary);
-    letter-spacing: -0.03em;
+.logo {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
 }
 
-.accent {
-    background: var(--accent-gradient-text);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.tagline {
-    font-size: 0.82rem;
-    color: var(--text-muted);
-    margin-top: 4px;
-}
-
-.socials {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.socials a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: var(--radius-full);
-    border: 1px solid var(--border-card);
-    color: var(--text-muted);
-    transition: all var(--transition-fast);
-}
-
-.socials a:hover {
-    color: var(--accent);
-    border-color: var(--accent);
-    background: var(--accent-glow);
+.logo span {
+  color: var(--primary);
 }
 
 .copy {
-    font-size: 0.75rem;
-    color: var(--text-muted);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.credits {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.creditLine {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.author {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.separator {
+  color: var(--border);
+}
+
+.developer {
+  color: var(--text-primary);
+  font-weight: 600;
+  transition: color var(--transition-base);
+  border-bottom: 1px solid transparent;
+}
+
+.developer:hover {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+
+@media (max-width: 600px) {
+  .inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 24px;
+  }
+
+  .credits {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .separator {
+    display: none;
+  }
 }

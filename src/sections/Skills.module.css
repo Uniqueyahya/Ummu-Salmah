@@ -1,0 +1,56 @@
+.skills {
+  position: relative;
+}
+
+.chipGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: rgba(20, 19, 27, 0.6);
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: default;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  backdrop-filter: blur(8px);
+}
+
+.chip:hover {
+  background: rgba(167, 139, 250, 0.1);
+  border-color: rgba(167, 139, 250, 0.3);
+  color: var(--primary);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(167, 139, 250, 0.1);
+}
+
+.chipDot {
+  width: 6px;
+  height: 6px;
+  background: var(--primary);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .chipGrid {
+    gap: 10px;
+  }
+
+  .chip {
+    padding: 10px 20px;
+    font-size: 0.82rem;
+  }
+}
