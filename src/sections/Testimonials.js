@@ -6,8 +6,8 @@ import { Quote } from 'lucide-react';
 const testimonials = [
   {
     quote: 'Ummu has an incredible eye for detail. She took our messy product requirements and turned them into a clean, intuitive SaaS dashboard that our clients absolutely love. Highly recommended!',
-    author: 'Sarah Jenkins',
-    role: 'Product Director at Pulse Health',
+    author: 'Mr Yinka',
+    role: 'CEO, Y3data',
   },
   {
     quote: 'Working with Ummu Salmah was a game changer for our mobile app. Her research-focused UX design and beautifully curated Figma files made the developer handoff completely seamless.',
@@ -16,7 +16,7 @@ const testimonials = [
   },
   {
     quote: 'Ummu Salmah delivered a beautiful, clean design system that saved our design team hundreds of hours. Her communication and professionalism are outstanding.',
-    author: 'Michael Chang',
+    author: 'Chinedu Okonkwo',
     role: 'Lead UX Manager at Nova Retail',
   },
 ];

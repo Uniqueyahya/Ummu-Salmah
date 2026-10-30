@@ -1,36 +1,9 @@
 'use client';
 
-import { useState } from 'react';
 import styles from './Projects.module.css';
-import { ArrowUpRight } from 'lucide-react';
-
-const projects = [
-  {
-    title: 'Apex FinTech Mobile App',
-    category: 'Mobile Design & Strategy',
-    desc: 'A complete redesign of a banking app focusing on simplifying peer-to-peer payments and portfolio tracking. Created a dark-first design language that improved engagement by 40%.',
-    tags: ['Figma', 'UX Research', 'Interactive Prototype', 'Design System'],
-    link: '#contact',
-  },
-  {
-    title: 'Nova E-Commerce Experience',
-    category: 'Web Design & Design System',
-    desc: 'An end-to-end UX overhaul of a global fashion retailer. Built a scalable, accessible design system containing over 200 components, resulting in a 25% increase in checkout conversions.',
-    tags: ['UI/UX Design', 'Wireframing', 'Design System', 'Accessibility'],
-    link: '#contact',
-  },
-  {
-    title: 'Pulse Health SaaS Dashboard',
-    category: 'B2B Web Application',
-    desc: 'A desktop platform for healthcare providers to track patient vitals and manage appointments. Simplified complex medical data sets into clean, digestible data visualizations.',
-    tags: ['Dashboard Design', 'Data Visualization', 'Figma', 'Prototyping'],
-    link: '#contact',
-  },
-];
+import { ArrowUpRight, ExternalLink, Sparkles } from 'lucide-react';
 
 export default function Projects() {
-  const [hoveredIndex, setHoveredIndex] = useState(null);
-
   return (
     <section id="projects" className={`section ${styles.projects}`}>
       <div className="container">
@@ -42,45 +15,34 @@ export default function Projects() {
           </p>
         </div>
 
-        <div className={styles.grid}>
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className={`${styles.projectCard} glass-card reveal`}
-              style={{ transitionDelay: `${index * 0.1}s` }}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
-              {/* Image / Thumbnail placeholder */}
-              <div className={styles.thumbnailWrap}>
-                <div className={styles.thumbnailGlow} />
-                <div className={styles.thumbnail}>
-                  <div className={styles.placeholderIcon}>
-                    <span>🎨 Case Study</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Info */}
-              <div className={styles.info}>
-                <span className={styles.category}>{project.category}</span>
-                <div className={styles.titleRow}>
-                  <h3 className={styles.projectTitle}>{project.title}</h3>
-                  <div className={`${styles.iconWrap} ${hoveredIndex === index ? styles.iconHovered : ''}`}>
-                    <ArrowUpRight size={20} />
-                  </div>
-                </div>
-                <p className={styles.desc}>{project.desc}</p>
-                <div className={styles.tags}>
-                  {project.tags.map((tag) => (
-                    <span key={tag} className={styles.tag}>
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
+        {/* Portfolio CTA Card */}
+        <div className={`${styles.ctaCard} glass-card reveal`}>
+          <div className={styles.ctaGlow} />
+          <div className={styles.ctaContent}>
+            <div className={styles.ctaIcon}>
+              <Sparkles size={28} />
             </div>
-          ))}
+            <h3 className={styles.ctaTitle}>Explore My Portfolio</h3>
+            <p className={styles.ctaDesc}>
+              Discover my complete body of work — from brand identities and mobile experiences 
+              to full-scale design systems. See the process, the craft, and the results.
+            </p>
+            <div className={styles.ctaActions}>
+              <a
+                href="https://uniqueyahya-porfolio.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.ctaButtonPrimary}
+              >
+                <span>View Portfolio</span>
+                <ExternalLink size={16} />
+              </a>
+              <a href="#contact" className={styles.ctaButtonSecondary}>
+                <span>Start a Project</span>
+                <ArrowUpRight size={16} />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>

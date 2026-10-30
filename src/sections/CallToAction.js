@@ -24,7 +24,7 @@ export default function CallToAction() {
                             <ArrowRight size={18} />
                         </a>
                         <a
-                            href="https://wa.me/2349027349119"
+                            href="https://wa.me/2348109115252"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="btn btn-whatsapp"

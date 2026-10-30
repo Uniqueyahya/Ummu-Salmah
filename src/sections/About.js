@@ -9,19 +9,22 @@ export default function About() {
       <div className="container">
         <div className="section-header">
           <span className="section-label">About Me</span>
-          <h2 className="section-title gradient-text">Passionate About Design</h2>
+          <h2 className="section-title gradient-text">Good Design is a Decision, Not a Decoration</h2>
           <p className="section-subtitle">
-            Creating digital experiences that balance user needs with business goals.
+            I turn what users need and what the business wants into one clear experience, so people get it the first time.
           </p>
         </div>
 
         <div className={styles.grid}>
           <div className={styles.bio}>
             <p className={styles.bioText}>
-              I&apos;m Ummu Salmah, a UI/UX Designer passionate about creating digital experiences that truly matter. I believe great design is invisible — it simply works. My approach combines empathy-driven research with pixel-perfect execution, ensuring every interaction feels intuitive and every visual tells a story.
+              I&apos;m Ummu Salmah, a UI/UX designer. Every screen I make starts with a question: what is this person trying to do, and what&apos;s getting in their way?
             </p>
             <p className={styles.bioText}>
-              With expertise spanning from initial user research to final handoff, I partner with teams and clients to build products that users love and businesses rely on. Whether it&apos;s a mobile app, web platform, or design system, I bring the same level of care and craftsmanship to every project.
+              I do the research first, because most design problems are really misunderstood people. Then I build the solution with care, down to the smallest detail, so the interface does its job and stays out of the way.
+            </p>
+            <p className={styles.bioText}>
+              I&apos;ve worked across mobile apps, web platforms and design systems, from first interview to final handoff. If you&apos;re building something people need to understand in seconds, let&apos;s talk.
             </p>
           </div>
 
